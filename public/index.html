@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Karaoke</title>
+</head>
+<body>
+    <div class="jumbotron justify-content-center primary">
+        <h1 style="text-align: center;">Simple Util To Get MP4 Video From Karaoke Mobile App</h1>
+    </div>
+    <div class="container">
+        <form>
+            <div class="form-group">
+              <label for="videoUrl">Karaoke Video URL</label>
+              <input type="text" class="form-control" id="videoUrl" placeholder="https://www.yokee.tv/r/hAStEJA5K7">
+              <small id="linkHelp" class="form-text text-muted">Enter the yokee link of the video here</small>
+            </div>
+            <div class="form-group">
+              <label for="emailInput">Your Email</label>
+              <input type="email" class="form-control" id="emailInput">
+              <small id="emailHelp" class="form-text text-muted">Enter the email to send the mp4 file to</small>
+            </div>
+            <button id="submitBtn" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    <script>
+        $("#submitBtn").on("click", (e)=>{
+            e.preventDefault();
+            const url = $("#videoUrl").val().trim();
+            const email = $("#emailInput").val().trim();
+            $.post("/api/getvid", {url,email})
+        })
+    </script>
+</body>
+</html>

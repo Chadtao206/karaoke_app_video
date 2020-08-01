@@ -1,0 +1,29 @@
+{
+  "name": "karaoke_app_video",
+  "version": "1.0.0",
+  "description": "simple app to bypass karaoke app paywall and send the mp4 video to your email",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chadtao206/karaoke_app_video.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chadtao206/karaoke_app_video/issues"
+  },
+  "homepage": "https://github.com/Chadtao206/karaoke_app_video#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.11",
+    "path": "^0.12.7"
+  }
+}
