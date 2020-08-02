@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //nodemailer function
-async function main(url) {
+async function main(url,email,res) {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -24,7 +24,7 @@ async function main(url) {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: process.env.EMAIL,
-      to: "chenchen408@gmail.com", // list of receivers
+      to: email, // list of receivers
       subject: "Chad has sent you your yokee video!", // Subject line
       text: `Hello please see attached. You can also access the full sized video at ${url}, and right click to download.`, // plain text body
       attachments: [{
@@ -33,16 +33,16 @@ async function main(url) {
       }]
     });
     console.log("Message sent: %s", info.messageId);
+    res.json("success!");
   }
   
  
 
 app.post("/api/getvid", ({body: {email, url}}, res)=>{
-    console.log(url, email);
     axios.get(url).then(async ({data}) => {
         const $ = await cheerio.load(data);
         const vidURL = $(".thumb1").attr("src").replace(/\.jpg/, ".mp4");
-        main(vidURL).catch(console.error);
+        main(vidURL,email,res).catch(console.error);
     })
 });
 

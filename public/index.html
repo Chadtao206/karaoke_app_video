@@ -31,7 +31,7 @@
             e.preventDefault();
             const url = $("#videoUrl").val().trim();
             const email = $("#emailInput").val().trim();
-            $.post("/api/getvid", {url,email})
+            $.post("/api/getvid", {url,email}).then(data=> alert("success!"))
         })
     </script>
 </body>
